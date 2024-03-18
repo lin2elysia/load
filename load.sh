@@ -10,12 +10,13 @@ download_and_set_permissions() {
     local download_url="$1"
     local filename=$(basename "$download_url")
     if [ ! -f "$DIRECTORY/$filename" ]; then
-        curl -s -o "$DIRECTORY/$filename" "$download_url"
+        echo "Downloading $filename..."
+        curl --progress-bar -o "$DIRECTORY/$filename" "$download_url"
         if [ $? -ne 0 ]; then
             echo "Failed to download $filename."
             exit 1
         fi
-        chmod +x "$DIRECTORY/$filename"
+        chmod 777 "$DIRECTORY/$filename"
     fi
 }
 
