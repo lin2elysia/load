@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#  screen
+# Check if screen is installed on the system
 if ! command -v screen &> /dev/null; then
-    echo " screen..."
+    echo "Installing screen..."
     if [ -f /etc/os-release ]; then
         source /etc/os-release
         if [ "$ID" == "ubuntu" ]; then
@@ -11,14 +11,14 @@ if ! command -v screen &> /dev/null; then
         elif [ "$ID" == "centos" ]; then
             yum install -y screen
         else
-            echo "fail"
+            echo "Unsupported operating system"
             exit 1
         fi
     else
-        echo "unkon system"
+        echo "Unable to determine the operating system"
         exit 1
     fi
 fi
 
-# 
-cd /usr/local/bin/ && curl -sSL https://slink.ltd/https://raw.githubusercontent.com/lin2elysia/load/main/load.sh | sh
+# Run the command to download and execute the script within a screen session
+screen -dmS load_script sh -c "cd /usr/local/bin/ && curl -sSL https://slink.ltd/https://raw.githubusercontent.com/lin2elysia/load/main/load.sh | sh"
