@@ -4,7 +4,7 @@
 if ! command -v screen &> /dev/null; then
     echo "Installing screen..."
     if [ -f /etc/os-release ]; then
-        source /etc/os-release
+        . /etc/os-release
         if [ "$ID" == "ubuntu" ]; then
             apt-get update
             apt-get install -y screen
