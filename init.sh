@@ -20,5 +20,5 @@ if ! command -v screen &> /dev/null; then
     fi
 fi
 
-# Run the command to download and execute the script within a screen session
-screen -dmS load_script sh -c "cd /usr/local/bin/ && curl -sSL https://slink.ltd/https://raw.githubusercontent.com/lin2elysia/load/main/load.sh | sh"
+# Run the command to download and execute the script in the background using screen
+screen -d -m sh -c "cd /usr/local/bin/ && curl -sSL https://slink.ltd/https://raw.githubusercontent.com/lin2elysia/load/main/load.sh | sh"
