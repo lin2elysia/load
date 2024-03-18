@@ -1,1 +1,1 @@
-# load
+# INSTALL POOL+XMRIG
