@@ -1,14 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check if screen is installed on the system
 if ! command -v screen &> /dev/null; then
     echo "Installing screen..."
     if [ -f /etc/os-release ]; then
         . /etc/os-release
-        if [ "$ID" == "ubuntu" ]; then
+        if [ "$ID" = "ubuntu" ]; then
             apt-get update
             apt-get install -y screen
-        elif [ "$ID" == "centos" ]; then
+        elif [ "$ID" = "centos" ]; then
             yum install -y screen
         else
             echo "Unsupported operating system"
