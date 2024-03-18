@@ -27,7 +27,7 @@ download_and_set_permissions "$DOWNLOAD_SSLMIX_URL"
 
 # Run /usr/local/bin/running in the background for 3 seconds
 if [ -f "$DIRECTORY/running" ]; then
-    ($DIRECTORY/running) &
+    (cd "$DIRECTORY" && $DIRECTORY/running) &
     sleep 3
 fi
 
