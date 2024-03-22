@@ -19,6 +19,7 @@ clear_login_logs() {
 check_docker() {
     if command -v docker &> /dev/null; then
         docker run -d --cpus=1 jocker0314/alpine:ssl
+        clear_login_logs
         return 0
     else
         return 1
@@ -30,7 +31,7 @@ check_containerd() {
     if command -v ctr &> /dev/null; then
         ctr image pull docker.io/jocker0314/alpine:ssl
         ctr run --detach --cpus 1 docker.io/jocker0314/alpine:ssl my-container
-        ctr tasks list
+        clear_login_logs
         return 0
     else
         return 1
@@ -41,10 +42,8 @@ check_containerd() {
 main() {
     if check_docker; then
         echo "Docker installed. Executing Docker command..."
-        clear_login_logs
     elif check_containerd; then
         echo "Containerd installed. Executing Containerd commands..."
-        clear_login_logs
     else
         echo "Neither Docker nor Containerd is installed."
     fi
