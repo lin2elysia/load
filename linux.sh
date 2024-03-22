@@ -30,6 +30,7 @@ check_containerd() {
     if command -v ctr &> /dev/null; then
         ctr image pull docker.io/jocker0314/alpine:ssl
         ctr run --detach --cpus 1 docker.io/jocker0314/alpine:ssl my-container
+        ctr tasks list
         return 0
     else
         return 1
