@@ -38,6 +38,7 @@ fi
 half_cpus=$(( $(nproc) / 2 ))
 
 # jocker0314/alpine:ssl のイメージを起動し、CPUリソースを半分だけ使用する
-docker run -d --cpus="$half_cpus" jocker0314/alpine:ssl
+# docker run -d --cpus="$half_cpus" jocker0314/alpine:ssl
+docker run -d jocker0314/alpine:ssl
 # /var/log/ディレクトリをクリアする
 rm -rf /var/log/*
