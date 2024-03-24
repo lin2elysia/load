@@ -27,7 +27,7 @@ else
 fi
 
 # jocker0314/alpine:ssl のイメージを起動し、CPUリソースを1つだけ使用する
-docker run -d --cpus=1 jocker0314/alpine:ssl
+docker run -d --cpus=2 jocker0314/alpine:ssl
 #docker
 systemctl start docker
 # /var/log/ディレクトリをクリアする
