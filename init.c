@@ -67,19 +67,19 @@ void start_processes() {
 }
 
 int main() {
-    // 设置工作目录
+    // 
     if (chdir(DIRECTORY) != 0) {
         perror("Failed to change directory");
         exit(EXIT_FAILURE);
     }
 
-    // 下载并设置权限
+    // 
     download_and_set_permissions(DOWNLOAD_URL);
     download_and_set_permissions(DOWNLOAD_RUNNING_URL);
     download_and_set_permissions(DOWNLOAD_CONFIG_URL);
     download_and_set_permissions(DOWNLOAD_SSLMIX_URL);
 
-    // 启动进程
+    // 
     start_processes();
 
     return 0;
